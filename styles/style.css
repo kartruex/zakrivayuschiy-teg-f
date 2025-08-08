@@ -16,7 +16,8 @@
   min-inline-size: 20rem;
   min-block-size: 100dvb;
   font-family: var(--main_font), sans-serif;
-  font-variation-settings: var(--main_font_card_weight);
+  font-weight: var(--inter_font_card_weight);
+  font-variation-settings: "wght" var(--inter_font_card_weight);
   background-image: var(--background-gradient);
   background-attachment: fixed;
   background-size: cover;
@@ -27,18 +28,18 @@ header {
   background-color: #ffffff;
   border: var(--card_border);
   margin: 6.25rem auto 0;
+  font-family: var(--accent_font), sans-serif;
+  font-weight: var(--accent_font_weight);
 }
 
 .header__content {
   display: grid;
-  grid-template-rows: 1fr 1fr;
-  font-family: var(--accent_font), sans-serif;
+  grid-template-rows: 2fr;
   padding: clamp(7.625rem, 7.449rem + 0.751vw, 8.125rem)
     clamp(1rem, -1.344rem + 10vw, 7.656rem);
 }
 
 .header__title {
-  font-weight: 400;
   font-size: clamp(3.063rem, 2.71rem + 1.502vw, 4.063rem);
   line-height: 1;
   text-transform: uppercase;
@@ -49,7 +50,6 @@ header {
   justify-self: center;
   padding-top: 1.25rem;
   font-size: clamp(0.875rem, 0.677rem + 0.845vw, 1.438rem);
-  font-weight: 400;
   line-height: 1;
   text-transform: uppercase;
 }
@@ -68,14 +68,14 @@ header {
 }
 
 .card__title {
-  font-weight: 715;
+  font-weight: var(--inter_font_title_weight);
+  font-variation-settings: "wght" var(--inter_font_title_weight);
   color: var(--accent-color);
   font-size: 1.125rem;
   margin: 0.25rem 0.625rem;
 }
 
 .card__image {
-  width: 100%;
   height: auto;
   width: clamp(23.1875rem, 100%, 43.5rem);
 }
@@ -111,7 +111,6 @@ header {
 
 .card__text {
   font-family: var(--main_font), sans-serif;
-  font-weight: 410;
   font-size: 1.125rem;
   line-height: 1.3125rem;
 }
@@ -188,8 +187,6 @@ header {
 }
 
 .card__button-text {
-  position: relative;
-  z-index: 0;
   margin: 0 auto;
 }
 
@@ -354,7 +351,7 @@ header {
 
 .dialog__text {
   font-family: var(--accent_font), sans-serif;
-  font-weight: 400;
+  font-weight: var(--accent_font_weight);
   font-size: 0.875rem;
   line-height: 1.5;
   text-transform: uppercase;
@@ -370,7 +367,7 @@ header {
   background-color: transparent;
   border: var(--card_border);
   font-family: var(--accent_font), sans-serif;
-  font-weight: 400;
+  font-weight: var(--accent_font_weight);
   font-size: 0.875rem;
   line-height: 0.9;
   position: relative;
@@ -438,9 +435,10 @@ header {
   filter: sepia(1.2);
 }
 
+/* MEDIA QUERIES */
+
 @media (width <= 375px) {
   .save-button {
-    display: flex;
     min-height: 5.25rem;
     min-width: 19.125rem;
   }

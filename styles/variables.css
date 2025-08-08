@@ -2,8 +2,9 @@
 :root {
   --main_font: "Inter";
   --accent_font: "PressStart2P";
-  --inter_font_title_weight: 700;
-  --inter_font_card_weight: 400;
+  --accent_font_weight: 400;
+  --inter_font_card_weight: 410;
+  --inter_font_title_weight: 715;
   --background-gradient: repeating-linear-gradient(
       to right,
       #d3d3d3 0,
