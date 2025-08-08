@@ -10,7 +10,451 @@
 
 */
 
+/* HEADER */
+
 .page {
-  min-inline-size: 320px;
+  min-inline-size: 20rem;
   min-block-size: 100dvb;
+  font-family: var(--main_font), sans-serif;
+  font-variation-settings: var(--main_font_card_weight);
+  background-image: var(--background-gradient);
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+header {
+  width: var(--card_width);
+  background-color: #ffffff;
+  border: var(--card_border);
+  margin: 6.25rem auto 0;
+}
+
+.header__content {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  font-family: var(--accent_font), sans-serif;
+  padding: clamp(7.625rem, 7.449rem + 0.751vw, 8.125rem)
+    clamp(1rem, -1.344rem + 10vw, 7.656rem);
+}
+
+.header__title {
+  font-weight: 400;
+  font-size: clamp(3.063rem, 2.71rem + 1.502vw, 4.063rem);
+  line-height: 1;
+  text-transform: uppercase;
+  justify-self: center;
+}
+
+.header__subtitle {
+  justify-self: center;
+  padding-top: 1.25rem;
+  font-size: clamp(0.875rem, 0.677rem + 0.845vw, 1.438rem);
+  font-weight: 400;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* MAIN (CARDS) */
+
+.card {
+  width: var(--card_width);
+  margin: 6rem auto 0;
+  background-color: #ffffff;
+  border: var(--card_border);
+}
+
+.card:nth-of-type(n + 2) {
+  margin-top: 3.125rem;
+}
+
+.card__title {
+  font-weight: 715;
+  color: var(--accent-color);
+  font-size: 1.125rem;
+  margin: 0.25rem 0.625rem;
+}
+
+.card__image {
+  width: 100%;
+  height: auto;
+  width: clamp(23.1875rem, 100%, 43.5rem);
+}
+
+.card__image-wrapper {
+  position: relative;
+  display: block;
+}
+
+.card__label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  background-color: transparent;
+  color: var(--accent-color);
+  font-size: 0.875rem;
+  font-family: var(--accent_font), sans-serif;
+  mix-blend-mode: hard-light;
+  z-index: 1;
+  text-shadow: 0 0 1px var(--stroke-color);
+}
+
+@supports (-webkit-text-stroke: 1px var(--stroke-color)) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--stroke-color);
+    text-shadow: none;
+  }
+}
+
+.card__description {
+  margin: 1.562rem 1.562rem;
+}
+
+.card__text {
+  font-family: var(--main_font), sans-serif;
+  font-weight: 410;
+  font-size: 1.125rem;
+  line-height: 1.3125rem;
+}
+
+.card__text p:nth-of-type(2) {
+  margin-top: 1.5625rem;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.562rem;
+  gap: 8px;
+}
+
+.card__button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.card__icon-button {
+  width: 2.375rem;
+  height: 2.375rem;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.card__button-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.card__icon-button:focus-visible {
+  outline: none;
+  border: 2px solid var(--accent-color);
+  transition: border 0.3s ease;
+}
+
+.card__button--like {
+  position: relative;
+  font-family: var(--accent_font), sans-serif;
+  font-size: clamp(0.75rem, 2vw, 0.875rem);
+  line-height: 0.9;
+  font-weight: 400;
+  border: var(--card_border);
+  width: 8.125rem;
+  height: 2.375rem;
+  color: var(--accent-color);
+}
+
+.card__button--like:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.card__button--like::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--stroke-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  mix-blend-mode: difference;
+}
+
+.card__button--like:hover::after {
+  transform: scaleX(1);
+}
+
+.card__button-text {
+  position: relative;
+  z-index: 0;
+  margin: 0 auto;
+}
+
+/* LIKE ICON */
+
+.like-icon {
+  transform-origin: center;
+}
+
+.like-icon .contour {
+  fill: var(--contour-color);
+  transition: fill 0.1s linear;
+}
+
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.like-icon .sparks {
+  opacity: 0;
+  fill: var(--animation-fill-color);
+}
+
+.card__icon-button:hover .like-icon .core {
+  fill: var(--contour-color);
+  transition-delay: 0s;
+}
+
+.card__icon-button:hover .like-icon .main-body {
+  fill: var(--contour-color);
+  transition-delay: 0.05s;
+}
+
+.card__icon-button:active .like-icon .core,
+.card__icon-button:active .like-icon .main-body {
+  fill: var(--animation-fill-color);
+  transition-delay: 0s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition-delay: 0s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-scale 0.3s ease-in 0.1s;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-visibility 0.3s ease-in 0.3s;
+}
+
+/* SAVE BUTTON */
+
+.save-button {
+  display: flex;
+  justify-content: center;
+  margin: 3.125rem auto;
+  width: clamp(19.125rem, 18.487rem + 2.723vw, 20.938rem);
+  padding: 1.0625rem 0;
+  background-color: var(--stroke-color);
+  border: var(--card_border);
+  position: relative;
+  overflow: hidden;
+}
+
+.save-button__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: var(--accent-color);
+}
+
+.save-button--icon {
+  flex-shrink: 0;
+}
+
+.save-button--text {
+  position: relative;
+  z-index: 0;
+  font-family: var(--accent_font), sans-serif;
+  font-size: 0.875rem;
+  line-height: 0.9;
+  font-weight: 400;
+  white-space: nowrap;
+  align-self: center;
+  padding: 0;
+}
+
+.save-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.save-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--stroke-color);
+  color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  mix-blend-mode: difference;
+}
+
+.save-button:hover::after {
+  transform: scaleX(1);
+}
+
+/* DIALOG WiNDOW */
+
+.dialog {
+  width: 22.0625rem;
+  background-color: #ffffff;
+  border: var(--card_border);
+  padding: 0;
+}
+
+.dialog[open] {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.dialog__container {
+  display: flex;
+  align-items: center;
+  width: 18.3125rem;
+  height: 3.9375rem;
+  margin: 1.875rem 1.875rem 0;
+}
+
+.dialog__icon {
+  width: 2.4375rem;
+  height: 2.4375rem;
+  flex-shrink: 0;
+  margin-right: 1.25rem;
+}
+
+.dialog__text {
+  font-family: var(--accent_font), sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  position: relative;
+  z-index: 0;
+}
+
+.dialog__button {
+  min-width: 18.3125rem;
+  min-height: 2.375rem;
+  margin: 1.875rem;
+  background-color: transparent;
+  border: var(--card_border);
+  font-family: var(--accent_font), sans-serif;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 0.9;
+  position: relative;
+  overflow: hidden;
+}
+
+.dialog > .dialog__button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+  transition: box-shadow 0.3s ease;
+}
+
+.dialog__button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: var(--stroke-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease-in-out;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.dialog__button:hover::after {
+  transform: scaleX(1);
+}
+
+/* FILTERS */
+
+.brightness_filter {
+  filter: brightness(4);
+}
+
+.contrast_filter {
+  filter: contrast(2.6);
+}
+
+.blur_filter {
+  filter: blur(0.8rem);
+}
+
+.opacity_filter {
+  opacity: 0.8;
+}
+
+.grayscale_filter {
+  filter: grayscale(1.5);
+}
+
+.invert_filter {
+  filter: invert(2);
+}
+
+.hue_rotate_filter {
+  filter: hue-rotate(90deg);
+}
+
+.mixed_filter {
+  filter: contrast(1.2) brightness(0.9) grayscale(1.5);
+}
+
+.sepia_filter {
+  filter: sepia(1.2);
+}
+
+@media (width <= 375px) {
+  .save-button {
+    display: flex;
+    min-height: 5.25rem;
+    min-width: 19.125rem;
+  }
+
+  .save-button__container {
+    flex-direction: column;
+  }
+
+  .save-button--icon {
+    height: 1.75rem;
+    width: 1.75rem;
+  }
+
+  .save-button--text {
+    text-wrap: nowrap;
+  }
 }
