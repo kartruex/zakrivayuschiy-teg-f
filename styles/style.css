@@ -76,13 +76,15 @@ header {
 }
 
 .card__image {
+  display: flex;
   height: clamp(23.188rem, 16.035rem + 30.516vw, 43.5rem);
   width: clamp(23.1875rem, 100%, 43.5rem);
 }
 
 .card__image-wrapper {
   position: relative;
-  display: block;
+  border-bottom: var(--card_border);
+  border-top: var(--card_border);
 }
 
 .card__label {
@@ -175,6 +177,7 @@ header {
   color: var(--accent-color);
   font-family: var(--accent_font), fantasy;
   font-weight: var(--accent_font_weight);
+  font-size: 0.875rem;
   line-height: 0.9;
   padding: 0;
   overflow: hidden;
@@ -267,7 +270,7 @@ header {
 }
 
 .like-icon.is-liked .sparks {
-  animation: heart-scale 0.3s ease-in 0.1s;
+  animation: sparks-visibility 0.3s ease-in 0.3s;
 }
 
 /* SAVE BUTTON */
@@ -401,6 +404,8 @@ header {
 }
 
 /* MEDIA QUERIES */
+
+/* 375 x 667 */
 
 @media (width <= 375px) {
   .save-button {
